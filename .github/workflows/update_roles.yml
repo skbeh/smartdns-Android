@@ -14,7 +14,7 @@ jobs:
 
     - name: Get rules
       run: |
-        sudo apt install -y dos2unix
+        sudo apt install -y dos2unix rename
         chmod 755 configupdate.sh
         ./configupdate.sh
         cp -r /tmp/smartdns/ config/rules/
