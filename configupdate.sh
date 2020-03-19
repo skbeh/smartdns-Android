@@ -25,7 +25,7 @@ wait $pid5
 wait $pid6
 sed -i '/^#/d' *.conf.tmp
 sed -i 's/=/ /' *.conf.tmp
-sort -u yhosts_union.conf.tmp anti-AD.conf.tmp > ad.conf.tmp
+sort -u yhosts_union.conf.tmp anti-AD.conf.tmp > ad.conf.tmp && rm -f yhosts_union.conf.tmp anti-AD.conf.tmp
 rename 's/\.tmp$//' *.conf.tmp
 
 wget -b --retry-connrefused --waitretry=2 -O adguard.hosts.tmp https://raw.githubusercontent.com/r-a-y/mobile-hosts/master/AdguardDNS.txt
@@ -55,7 +55,7 @@ sed -i '/^#/d' all.hosts.tmp
 sed -i 's/127.0.0.1/#/' all.hosts.tmp
 sed -i 's/0.0.0.0/#/' all.hosts.tmp
 sed -i 's/::/#/' all.hosts.tmp
-sort -u all.hosts.tmp | awk '/^#/ {printf"address /%s/%s\n",$2,$1}' - > all.hosts
+sort -u all.hosts.tmp | awk '/^#/ {printf"address /%s/%s\n",$2,$1}' > all.hosts
 
 rm -f *.tmp wget-log*
 tar -cJ -C $TMPDIR -f $TMPDIR/smartdns.tar.xz smartdns
