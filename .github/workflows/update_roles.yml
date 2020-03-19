@@ -1,4 +1,4 @@
-name: Update hosts
+name: Update rules
 
 on:
   push:
@@ -12,15 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run a multi-line script
+    - name: Get rules
       run: |
+        sudo apt install -y dns2unix
         chmod 755 configupdate.sh
         ./configupdate.sh
-        cp -r /tmp/smartdns/ config/rules
-    - name: Workspace Commit
-      uses: gha-utilities/workspace-commit@v0.0.2
+        cp -r /tmp/smartdns/ config/rules/
+    - name: Commit rules
+      uses: zwaldowski/git-commit-action@v1
       with:
-             message: Update rules
+        commit_message: Automated update rules
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.5.0
       with:
