@@ -1,0 +1,23 @@
+name: Update hosts
+
+on:
+  push:
+  schedule:
+    - cron: 0 20 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run a multi-line script
+      run: |
+        chmod 755 configupdate.sh
+        ./configupdate.sh
+        cp -r /tmp/smartdns/ config/rules
+    - name: GitHub Push
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: $\{{ secrets.GITHUB_TOKEN }}
