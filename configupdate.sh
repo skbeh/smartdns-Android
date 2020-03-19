@@ -32,7 +32,7 @@ wget -b --retry-connrefused --waitretry=2 -O adguard.hosts.tmp https://raw.githu
 pid1=$!
 wget -b --retry-connrefused --waitretry=2 -O Peter_Lowe.hosts.tmp 'https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext'
 pid2=$!
-wget --retry-connrefused --waitretry=2 -qO- https://mirror1.malwaredomains.com/files/domains.hosts && awk -F '#' '($1) {print $1}' - > malwaredomains.hosts.tmp &
+wget --retry-connrefused --waitretry=2 -qO- https://mirror1.malwaredomains.com/files/domains.hosts | awk -F '#' '($1) {print $1}' - > malwaredomains.hosts.tmp &
 pid3=$!
 wget --retry-connrefused --waitretry=2 -qO- https://raw.githubusercontent.com/vokins/yhosts/master/hosts.txt | sed '/^@/d' - > yhosts.hosts.tmp &
 pid4=$!
