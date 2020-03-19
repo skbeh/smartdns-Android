@@ -17,6 +17,7 @@ jobs:
         sudo apt install -y dos2unix rename
         chmod 755 configupdate.sh
         ./configupdate.sh
+        rm -rf config/rules/
         cp -r /tmp/smartdns/ config/rules/
     - name: Commit rules
       uses: zwaldowski/git-commit-action@v1
