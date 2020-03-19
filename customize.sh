@@ -3,7 +3,7 @@ SKIPUNZIP=1
 	ui_print "****************"
 	ui_print " SmartDNS - Android"
 	ui_print " $version"
-	ui_print " pymumu (module by x4455)"
+	ui_print " pymumu (module by x4455)（modified by DuhaPT)"
 	ui_print "****************"
 
 	[ $MAGISK_VER_CODE -gt 18100 ] || { 
@@ -18,7 +18,7 @@ SKIPUNZIP=1
 
 	case $ARCH in
 	arm|arm64|x86|x64)
-		BINARY_PATH=$TMPDIR/server-$ARCH ;;
+		BINARY_PATH=$TMPDIR/server/$ARCH ;;
 	*)
 		abort "(E) $ARCH are unsupported architecture." ;;
 	esac
@@ -41,9 +41,7 @@ SKIPUNZIP=1
 
 	if [ $(ls $DATA_INTERNAL_DIR | wc -l) -eq 0 ]; then
 		ui_print ""
-		ui_print '(!!!) Requires you to set the configuration yourself,'
-		ui_print ' only basic networking features are provided by default.'
-		ui_print '(!!!) 默认仅提供基础联网功能，需要您自行设置配置。'
+		ui_print '已配置好高级功能，无需手动配置。'
 		ui_print ""
 		mkdir -p $DATA_INTERNAL_DIR
 		unzip -oj "$ZIPFILE" 'config/*' -d $DATA_INTERNAL_DIR >&2
