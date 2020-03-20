@@ -15,10 +15,13 @@ jobs:
     - name: Get rules
       run: |
         sudo apt install -y dos2unix rename
-        chmod 755 configupdate.sh
-        ./configupdate.sh
+        chmod 755 common/configs_update.sh
+        ./common/configs_update.sh
+        TMPDIR=/tmp
         rm -rf config/rules/
-        cp -r /tmp/smartdns/ config/rules/
+        cp -r $TMPDIR/smartdns/ config/rules/
+        cp -r . $TMPDIR/module/
+        rm -rf $TMPDIR/module/LICENSE $TMPDIR/module/.git* $TMPDIR/module/README.md
     - name: Commit rules
       uses: zwaldowski/git-commit-action@v1
       with:
@@ -31,4 +34,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: rules
-        path: /tmp/smartdns/
+        path: /tmp/module/
