@@ -3,7 +3,7 @@ SKIPUNZIP=1
 	ui_print "****************"
 	ui_print " SmartDNS - Android"
 	ui_print " $version"
-	ui_print " pymumu (module by x4455)（modified by DuhaPT)"
+	ui_print " pymumu (module by x4455) (modified by DuhaPT)"
 	ui_print "****************"
 
 	[ $MAGISK_VER_CODE -gt 18100 ] || { 
