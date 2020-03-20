@@ -39,7 +39,7 @@ SKIPUNZIP=1
 		abort "(E) $ARCH binary file missing."
 	fi
 
-	if [ $(ls $DATA_INTERNAL_DIR | wc -l) -eq 0 ]; then
+	if true; then
 		ui_print ""
 		ui_print '已配置好高级功能，无需手动配置。'
 		ui_print ""
