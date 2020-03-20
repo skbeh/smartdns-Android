@@ -14,11 +14,11 @@ SKIPUNZIP=1
 
 	ui_print "- Extracting module files"
 	unzip -oj "$ZIPFILE" 'common/*' -d $MODPATH >&2
-	unzip -oj "$ZIPFILE" 'binary/*' -d $TMPDIR >&2
+	unzip -o "$ZIPFILE" 'binary' -d $TMPDIR >&2
 
 	case $ARCH in
 	arm|arm64|x86|x64)
-		BINARY_PATH=$TMPDIR/server/$ARCH ;;
+		BINARY_PATH=$TMPDIR/binary/server/$ARCH ;;
 	*)
 		abort "(E) $ARCH are unsupported architecture." ;;
 	esac
@@ -26,7 +26,7 @@ SKIPUNZIP=1
 	MODDIR=$MODPATH
 	. $MODDIR/lib.sh
 
-	if [ -f "$BINARY_PATH" -a -f $TMPDIR/setuidgid ]; then
+	if [ -f "$BINARY_PATH" -a -f $TMPDIR/binary/setuidgid ]; then
 		chmod 0755 $BINARY_PATH
 		ver=$($BINARY_PATH -v | awk -F " " '{print $2}')
 		ui_print "- Version: [$ver]"
@@ -34,7 +34,7 @@ SKIPUNZIP=1
 
 		mkdir $CORE_INTERNAL_DIR
 		cp $BINARY_PATH $CORE_INTERNAL_DIR/$CORE_BINARY
-		cp $TMPDIR/setuidgid $CORE_INTERNAL_DIR
+		cp $TMPDIR/binary/setuidgid $CORE_INTERNAL_DIR
 	else
 		abort "(E) $ARCH binary file missing."
 	fi
