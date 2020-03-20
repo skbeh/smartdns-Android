@@ -43,6 +43,8 @@ wget --retry-connrefused --waitretry=2 -O neohosts.hosts.tmp 'https://cdn.jsdeli
 pid6=$!
 wget --retry-connrefused --waitretry=2 -O hphosts.hosts.tmp https://hosts-file.net/ad_servers.txt &
 pid7=$!
+wget --retry-connrefused --waitretry=2 -O adaway.hosts.tmp https://adaway.org/hosts.txt &
+pid8=$!
 wait $pid1
 wait $pid2
 wait $pid3
@@ -50,6 +52,7 @@ wait $pid4
 wait $pid5
 wait $pid6
 wait $pid7
+wait $pid8
 cat *.hosts.tmp > all.hosts.tmp
 dos2unix all.hosts.tmp
 sed -i '/^#/d' all.hosts.tmp
