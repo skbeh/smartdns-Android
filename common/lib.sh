@@ -19,7 +19,7 @@ IP6T_block=true
 Strict=true
 
 # Server permission [radio/root] (Some operations may want to use root)
-ServerUID='radio'
+ServerUID='root'
 
 ####################
 ### Don't modify it.
