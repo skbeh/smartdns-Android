@@ -20,6 +20,7 @@ jobs:
         TMPDIR=/tmp
         rm -rf config/rules/
         cp -r $TMPDIR/smartdns/ config/rules/
+        cp $TMPDIR/smartdns.tar.xz config/rules/
         cp -r . $TMPDIR/module/
         rm -rf $TMPDIR/module/LICENSE $TMPDIR/module/.git* $TMPDIR/module/README.md
     - name: Upload artifact
