@@ -1,0 +1,38 @@
+name: Update rules
+
+on:
+  push:
+  schedule:
+    - cron: 0 20 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get rules
+      run: |
+        sudo apt install -y dos2unix rename
+        chmod 755 common/rules_update.sh
+        ./common/rules_update.sh
+        TMPDIR=/tmp
+        rm -rf config/rules/
+        cp -r $TMPDIR/rules/ config/rules/
+        cp $TMPDIR/rules.tar.xz config/rules/
+        cp -r . $TMPDIR/module/
+        rm -rf $TMPDIR/module/LICENSE $TMPDIR/module/config/LICENSE $TMPDIR/module/.git* $TMPDIR/module/README.md $TMPDIR/module/config/rules/rules.tar.xz
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: magisk_module
+        path: /tmp/module/
+    - name: Commit rules
+      uses: zwaldowski/git-commit-action@v1
+      with:
+        commit_message: Automated update rules
+    - name: GitHub Push
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: $\{{ secrets.GITHUB_TOKEN }}
