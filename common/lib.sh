@@ -16,7 +16,7 @@ MODE='proxy'
 IP6T_block=true
 
 # Limit queries from non-LAN
-Strict=true
+Strict=false
 
 # Server permission [radio/root] (Some operations may want to use root)
 ServerUID='root'
