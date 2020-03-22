@@ -288,7 +288,7 @@ process() {
 }
 
 main() {
-	Listen_PORT='6453'; Route_PORT=''
+	Listen_PORT='6053'; Route_PORT=''
 	MODE='proxy'
 	ServerUID='radio'
 	IP6T_block=true
