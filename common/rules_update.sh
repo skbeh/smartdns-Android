@@ -71,7 +71,7 @@ sed -i 's/:: //' whitelist.txt
 for white in $(cat whitelist.txt)
 do
   echo $white
-  sed -i '/white/d' all_block.conf.tmp
+  sed -i "/$white/d" all_block.conf.tmp
 done
 
 rm -f *.ad.conf.tmp
