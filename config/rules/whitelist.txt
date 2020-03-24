@@ -1,16 +1,1 @@
-click.simba.taobao.com
-ju.taobao.com
-tejia.taobao.com
-tui.taobao.com
-tyh.taobao.com
-g.click.taobao.com
-i.click.taobao.com
-s.click.taobao.com
-s.click.tmall.com
-temai.m.taobao.com
-jx.tmall.com
-ccc.x.jd.com
-click.jr.jd.com
-img.x.jd.com
-jrclick.jd.com
-stat.m.jd.com
+127.0.0.1 ju.taobao.com
