@@ -20,9 +20,9 @@ jobs:
         TMPDIR=/tmp
         rm -rf config/rules/
         cp -r $TMPDIR/rules/ config/rules/
-        cp $TMPDIR/rules.tar.xz config/rules/
+        cp $TMPDIR/rules.tar.gz config/rules/
         cp -r . $TMPDIR/module/
-        rm -rf $TMPDIR/module/LICENSE $TMPDIR/module/config/LICENSE $TMPDIR/module/.git* $TMPDIR/module/README.md $TMPDIR/module/common/rules_update.sh $TMPDIR/module/config/rules/rules.tar.xz
+        rm -rf $TMPDIR/module/LICENSE $TMPDIR/module/config/LICENSE $TMPDIR/module/.git* $TMPDIR/module/README.md $TMPDIR/module/common/rules_update.sh $TMPDIR/module/config/rules/rules.tar.gz
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:

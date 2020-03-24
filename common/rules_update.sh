@@ -73,4 +73,4 @@ rm -f *.ad.conf.tmp *.txt
 rename 's/\.tmp$//' *.conf.tmp
 
 rm -f *.tmp wget-log*
-tar -cJ -C $TMPDIR -f $TMPDIR/rules.tar.xz rules
+tar -cz -C $TMPDIR -f $TMPDIR/rules.tar.gz rules
