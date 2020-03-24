@@ -63,8 +63,7 @@ sort -u all.hosts.tmp *.ad.conf.tmp  | awk '/^#/ {printf"address /%s/%s\n",$2,$1
 #whitelist
 wget --retry-connrefused --waitretry=2 -qO- https://github.com/vokins/yhosts/raw/master/data/moot/cps.txt | sed '/^@/d' - > cps.txt
 cat *.txt > whitelist.txt
-sed -i '/^#/d' whitelist.txt
-sed -i -n '2p' whitelist.txt
+sed '/^#/d' whitelist.txt | awk '{print $2}' > whitelist.txt
 for white in $(cat whitelist.txt)
 do
   sed -i "/$white/d" all_block.conf.tmp
