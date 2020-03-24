@@ -70,6 +70,7 @@ sed -i 's/0.0.0.0 //' whitelist.txt
 sed -i 's/:: //' whitelist.txt
 for white in $(cat whitelist.txt)
 do
+  echo $white
   sed -i '/white/d' all_block.conf.tmp
 done
 
