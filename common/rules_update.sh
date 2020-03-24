@@ -69,7 +69,7 @@ do
   sed -i "/$white/d" all_block.conf.tmp
 done
 
-rm -f *.ad.conf.tmp
+rm -f *.ad.conf.tmp *.txt
 rename 's/\.tmp$//' *.conf.tmp
 
 rm -f *.tmp wget-log*
