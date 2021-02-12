@@ -54,6 +54,8 @@ wait $pid7
 cat *.hosts.tmp > all.hosts.tmp
 dos2unix all.hosts.tmp
 sed -i '/^#/d' all.hosts.tmp
+sed -i '/localhost/d' all.hosts.tmp
+sed -i '/loopback/d' all.hosts.tmp
 sed -i 's/127.0.0.1/#/' all.hosts.tmp
 sed -i 's/0.0.0.0/#/' all.hosts.tmp
 sed -i 's/::/#/' all.hosts.tmp
