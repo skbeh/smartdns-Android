@@ -24,7 +24,7 @@ jobs:
         cp -r . $TMPDIR/module/
         rm -rf $TMPDIR/module/LICENSE $TMPDIR/module/config/LICENSE $TMPDIR/module/.git* $TMPDIR/module/README.md $TMPDIR/module/common/rules_update.sh $TMPDIR/module/config/rules/rules.tar.gz
     - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v2
       with:
         name: magisk_module
         path: /tmp/module/
@@ -33,6 +33,6 @@ jobs:
       with:
         commit_message: Automated update rules
     - name: GitHub Push
-      uses: ad-m/github-push-action@v0.5.0
+      uses: ad-m/github-push-action@v0.6.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
